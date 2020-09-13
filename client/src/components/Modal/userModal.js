@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
 import UserContext from "../../utils/userContext";
-import './style.css';
+
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;

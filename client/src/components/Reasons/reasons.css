@@ -1,0 +1,52 @@
+#containerReason {
+    padding-bottom: 10px;
+  }
+  
+#why {
+    margin-top: 30px;
+    font-size: 50px;
+    font-family:  cursive;
+  color: #fff;
+  text-align: center;
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+
+  @-webkit-keyframes glow {
+    from {
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #2177ad, 0 0 40px #2177ad, 0 0 50px #2177ad, 0 0 60px #2177ad, 0 0 70px #2177ad;
+    }
+    
+    to {
+      text-shadow: 0 0 20px #fff, 0 0 30px #31a4eb, 0 0 40px #31a4eb, 0 0 50px #31a4eb, 0 0 60px #31a4eb, 0 0 70px #31a4eb, 0 0 80px #31a4eb;
+    }
+  }
+
+.reason {
+      width: 300px;
+      height: 250px;
+      margin: 20px 50px 0 0;
+      /* box-shadow: 0px 0px 5px 0px #888; */
+      position: relative;
+      padding-top: 20px;
+      padding-bottom: 20px;
+  }
+
+.icon {
+    padding-bottom: 20px;
+}
+
+.copy {
+    padding-top: 6px;
+    padding-left: 16px;
+    padding-right: 16px;
+    line-height: 25px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 19px;
+    letter-spacing: 1px;
+    word-spacing: 5px;
+  }
+  
+  

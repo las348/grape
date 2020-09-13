@@ -15,7 +15,6 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: 'bolder',
         color: 'white',
         marginTop: 20,
-        color: 'white',
         '&:hover': {
             background: "#2fd65d",
         }

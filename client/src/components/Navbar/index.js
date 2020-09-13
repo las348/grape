@@ -71,7 +71,7 @@ function SearchAppBar() {
             }
           </Menu>
           <Typography className="title" variant="h6" noWrap>
-            <a href="/" style={{ textDecoration: 'none', color: 'white', }}> Play-datery </a>
+            <a href="/" style={{ textDecoration: 'none', color: 'white', }}> PlayDatery </a>
           </Typography>
 
         </Toolbar>

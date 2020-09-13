@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import API from '../../utils/API';
 import UserContext from "../../utils/userContext";
 import moment from 'moment';
 
@@ -57,12 +56,12 @@ export default function SimpleModal(props) {
   const { userState, setUserState } = useContext(UserContext);
   const { user } = userState;
   const classes = useStyles();
-  // getModalStyle is not a pure function, we roll the style only on the first render
+
   const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = React.useState(false);
 
   const [formObject, setFormObject] = useState({});
-  const [upcoming, setUpcoming] = useState([]);
+
 
   function handleSchedule(event, Date) {
     const { name, value } = event.target;

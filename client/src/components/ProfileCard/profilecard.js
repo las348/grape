@@ -1,7 +1,6 @@
 import React, { useState, useContext } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -12,32 +11,34 @@ import TableRow from '@material-ui/core/TableRow';
 import UserModal from "../Modal/userModal";
 import ChildModal from "../Modal/childModal";
 import UserContext from "../../utils/userContext";
-
+import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles({
     root: {
         maxWidth: 675,
-        // marginTop: 50,
     },
     container: {
         textAlign: "-webkit-center",
     },
     media: {
         marginTop: 10,
-        maxWidth: "30%",
-        marginLeft: "-20%",
+        maxWidth: "40%",
+        marginLeft: "10%",
+    },
+    image: {
+        borderRadius: "10px",
+        boxShadow: "11px 7px 36px -10px rgba(0,0,0,0.75)",
     },
     details: {
         display: 'flex',
-        marginTop: 50,
         color: 'black',
-    },
-    buttons: {
-        float: "right",
     },
     table: {
         fontWeight: "bolder",
         fontSize: "large",
+    },
+    button: {
+        marginBottom: "10px",
     }
 });
 
@@ -56,7 +57,7 @@ function profileCard(props) {
     })
 
     const Successmsg = () => (
-        <p style={{ color: 'green' }}>Image Uploaded Successfully.</p>
+        <p style={{ color: '#2fd65d' }}>Image Uploaded Successfully.</p>
     )
 
     const Failuremsg = () => (
@@ -98,11 +99,12 @@ function profileCard(props) {
         <div className={classes.container}>
             <h2>{user.displayName}'s Profile</h2>
             <Card className={classes.root}>
-                <CardActionArea className={classes.details}>
+                <CardActions className={classes.details}>
                     <Box className={classes.media}>
                         {imageUpld.upload ? (imageUpld.success ? <Successmsg /> : <Failuremsg />) : null}
                         <CardMedia
                             component="img"
+                            className={classes.image}
                             image={imageUpld.url}
                         />
                         <Upload />
@@ -139,8 +141,8 @@ function profileCard(props) {
                             <TableCell align="left">{(user.address && user.address.zip) ? user.address.zip : ""}</TableCell>
                         </TableRow>
                     </CardContent>
-                </CardActionArea>
-                <CardActions className={classes.buttons}>
+                </CardActions>
+                <Grid container justify="center" className={classes.button}>
                     <UserModal
                         updateUser={updateUser}
                     >
@@ -152,7 +154,7 @@ function profileCard(props) {
                     >
                         Add Child
                     </ChildModal>
-                </CardActions>
+                    </Grid>
             </Card>
         </div>
     )

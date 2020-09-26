@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -10,6 +9,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import Box from '@material-ui/core/Box';
 import ChildModal from "../Modal/childModal";
+import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles({
     root: {
@@ -19,8 +19,12 @@ const useStyles = makeStyles({
     },
     media: {
         marginTop: 10,
-        maxWidth: "30%",
-        marginLeft: "-20%",
+        maxWidth: "40%",
+        marginLeft: "10%",
+    },
+    image: {
+        borderRadius: "10px",
+        boxShadow: "11px 7px 36px -10px rgba(0,0,0,0.75)",
     },
     details: {
         display: 'flex',
@@ -29,6 +33,7 @@ const useStyles = makeStyles({
         background: 'rgba(34,133,195,1)',
         fontWeight: 'bolder',
         color: 'white',
+        float: "right",
     },
     buttons: {
         float: "right",
@@ -60,7 +65,7 @@ function ChildCard(props) {
     const classes = useStyles();
 
     const Successmsg = () => (
-        <p style={{ color: 'green' }}>Image Uploaded Successfully.</p>
+        <p style={{ color: '#2fd65d' }}>Image Uploaded Successfully.</p>
     )
 
     const Failuremsg = () => (
@@ -101,10 +106,11 @@ function ChildCard(props) {
     return (
         <Card className={classes.root}>
            
-            <CardActionArea className={classes.details}>
+            <CardActions className={classes.details}>
                 <Box className={classes.media}>
                     {imageUpld.upload ? (imageUpld.success ? <Successmsg /> : <Failuremsg />) : null}
                     <CardMedia
+                        className={classes.image}
                         component="img"
                         image={imageUpld.url}
                     />
@@ -130,7 +136,7 @@ function ChildCard(props) {
                         <TableCell align="left">{activities}</TableCell>
                     </TableRow>
                 </CardContent>
-            </CardActionArea>
+            </CardActions>
             <CardActions className={classes.buttons}>
                 <ChildModal
                     saveChild={updateChild}

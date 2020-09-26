@@ -7,26 +7,26 @@ function Login() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
 
-  function handleInputChange (event) {
-    const {name, value} = event.target;
-    if(name === 'email') {
+  function handleInputChange(event) {
+    const { name, value } = event.target;
+    if (name === 'email') {
       setEmail(value);
     }
-    else if(name === 'password'){
+    else if (name === 'password') {
       setPassword(value);
     }
   }
 
-  function handleBtnSubmit (event) {
+  function handleBtnSubmit(event) {
     event.preventDefault();
-    if (email === "" || password === "" ) {
-      setError('Enter your Email and Password to Login.');
+    if (email === "" || password === "") {
+      setError('Please enter your Email & Password to Login.');
     } else {
-      auth.signInWithEmailAndPassword( email, password)
+      auth.signInWithEmailAndPassword(email, password)
         .catch(() => {
-          setError("Error Loging in with this email and password.");
+          setError("Error logging in with this email and password.");
         }
-      )
+        )
     }
   }
 

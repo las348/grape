@@ -2,12 +2,9 @@
     margin-right: 5px;
 }
 
-.btn-link {
-    color: #2285c3;
-}
-
-.btn-link:hover {
+#search {
     color: #36fd2d;
+    font-size: larger;
 }
 
 .homeSearch {

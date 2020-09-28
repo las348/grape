@@ -1,15 +1,12 @@
 import React from 'react';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardMedia from '@material-ui/core/CardMedia';
-import Typography from '@material-ui/core/Typography';
 import "./resultcard.css";
 import DateModal from '../Modal/dateModal';
-
+import Card from 'react-bootstrap/Card';
+import CardDeck from 'react-bootstrap/CardDeck';
 
 
 export function ResultCard({ children }) {
-    return <div className="homeResults">{children}</div>;
+    return <CardDeck className="carddeck">{children}</CardDeck>;
 }
 
 export function ChildListItem(props) {
@@ -25,28 +22,26 @@ export function ChildListItem(props) {
     const { schedulePlaydate } = props;
 
     return (
-
-        <Card className="resultCard">
-            <CardMedia
-                className="media"
-                image={image || "https://via.placeholder.com/150"}
-                title={firstName}
-            />
-            <CardActionArea >
-                <Typography gutterBottom variant="h5" component="h2">
-                    {firstName} {lastName} </Typography>
-
-                <Typography id="font">Age: {age}</Typography>
-                <Typography id="font">Activities: {activities}</Typography>
-
+        <Card className="resultCard text-center">
+            <Card.Img
+                variant="top"
+                src={image || "https://via.placeholder.com/150"}
+                className="media" />
+            <Card.Body style={{paddingBottom: '10px'}}>
+                <Card.Title> {firstName} {lastName}</Card.Title>
+                <p style={{margin: '0'}}>
+                    Age: {age}
+                </p>
+                <p style={{margin: '0'}}>  Activities: {activities}
+                </p>
+           
+            <hr></hr>
                 <DateModal
                     childId={_id}
                     parent={parent}
                     schedulePlaydate={schedulePlaydate}
                 />
-
-            </CardActionArea>
+            </Card.Body>
         </Card>
-
-    );
+    )
 }

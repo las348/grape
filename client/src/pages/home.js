@@ -107,37 +107,38 @@ function Home() {
 
     return (
         <div className="homeImg">
-             {alertSuccess ? 
-            <Alert /> : null}
-            
+            {alertSuccess ?
+                <Alert /> : null}
+
             <h2>Welcome {user.displayName}</h2>
 
-           
 
             <Grid container justify="center">
                 <SearchForm
                     handleInputChange={handleInputChange}
                     handleSearchChild={handleSearchChild}
                 />
-                <Grid container justify="center" >
-                    {!child.length ? (
-                        <h2>No results found</h2>
-                    ) : (
-                            <ResultCard>
-                                {child.map(child => {
-                                    return (
-                                        <ChildListItem
-                                            key={child._id}
-                                            child={child}
-                                            schedulePlaydate={schedulePlaydate}
-                                        />
-                                    );
-                                })}
-                            </ResultCard>
-                        )}
-
-                </Grid>
             </Grid>
+            <div container justify="center" >
+                {!child.length ? (
+                    <h2>No results found</h2>
+                ) : (
+                        <ResultCard>
+                            {child.map(child => {
+                                return (
+                                    <ChildListItem
+                                        key={child._id}
+                                        child={child}
+                                        schedulePlaydate={schedulePlaydate}
+                                    />
+                                );
+                            })}
+                        </ResultCard>
+                    )}
+
+            </div>
+
+
         </div>
     )
 }

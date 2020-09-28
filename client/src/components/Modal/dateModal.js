@@ -5,7 +5,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import UserContext from "../../utils/userContext";
 import moment from 'moment';
-
+import Grid from '@material-ui/core/Grid';
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
@@ -141,7 +141,7 @@ export default function SimpleModal(props) {
   );
 
   return (
-    <div>
+    <Grid container justify='center'>
       <Button className={classes.button} onClick={handleOpen}>
         Schedule Playdate
         </Button>
@@ -154,6 +154,6 @@ export default function SimpleModal(props) {
         {body}
       </Modal>
 
-    </div>
+    </Grid>
   );
 }

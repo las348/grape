@@ -5,7 +5,9 @@ h2 {
 
 
 .homeImg {
-    background-image: url("../../assets/baby-Shark.jpg");
+    /* background-image: url("../../assets/baby-Shark.jpg"); */
+    background-color: deepskyblue;
     background-repeat: no-repeat;
     background-size: cover;
+    min-height: 800px;
 }

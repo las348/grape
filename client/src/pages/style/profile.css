@@ -1,11 +1,16 @@
 .backImg {
-    background-image: url("../../assets/baby-Shark.jpg");
+    /* background-image: url("../../assets/baby-Shark.jpg"); */
     background-repeat: no-repeat;
     background-size: cover;
+    background-color: deepskyblue;
     padding: 20px 0;
 }
 
 .profileContainer {
     margin-bottom: 200px;
+}
 
+h2 {
+    text-align: left;
+    margin-left: 300px;
 }

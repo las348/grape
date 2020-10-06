@@ -1,0 +1,16 @@
+.carddeck {
+    width: 75%;
+    margin-left: 5px;
+    display: grid;
+  }
+
+.resultCard {
+  display: block;
+  box-shadow: 0px 0px 5px 0px rgb(5, 5, 5);
+} 
+
+.media {
+  top: 0;
+	left: 0;
+	width: 100%;
+}

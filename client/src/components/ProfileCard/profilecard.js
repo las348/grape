@@ -16,9 +16,7 @@ import Grid from '@material-ui/core/Grid';
 const useStyles = makeStyles({
     root: {
         maxWidth: 675,
-    },
-    container: {
-        textAlign: "-webkit-center",
+        marginLeft: 50,
     },
     media: {
         marginTop: 10,
@@ -95,68 +93,65 @@ function profileCard(props) {
             })
     }
 
-    return (
-        <div className={classes.container}>
-            <h2>{user.displayName}'s Profile</h2>
-            <Card className={classes.root}>
-                <CardActions className={classes.details}>
-                    <Box className={classes.media}>
-                        {imageUpld.upload ? (imageUpld.success ? <Successmsg /> : <Failuremsg />) : null}
-                        <CardMedia
-                            component="img"
-                            className={classes.image}
-                            image={imageUpld.url}
-                        />
-                        <Upload />
-                    </Box>
-                    <CardContent>
-                        <TableRow key="Name">
-                            <TableCell component="th" scope="row" className={classes.table} >
-                                Name:
+    return (    
+        <Card className={classes.root}>
+            <CardActions className={classes.details}>
+                <Box className={classes.media}>
+                    {imageUpld.upload ? (imageUpld.success ? <Successmsg /> : <Failuremsg />) : null}
+                    <CardMedia
+                        component="img"
+                        className={classes.image}
+                        image={imageUpld.url}
+                    />
+                    <Upload />
+                </Box>
+                <CardContent>
+                    <TableRow key="Name">
+                        <TableCell component="th" scope="row" className={classes.table} >
+                            Name:
                             </TableCell>
-                            <TableCell align="left">{user.displayName}</TableCell>
-                        </TableRow>
-                        <TableRow key="Email">
-                            <TableCell component="th" scope="row" className={classes.table} >
-                                Email:
+                        <TableCell align="left">{user.displayName}</TableCell>
+                    </TableRow>
+                    <TableRow key="Email">
+                        <TableCell component="th" scope="row" className={classes.table} >
+                            Email:
                             </TableCell>
-                            <TableCell align="left">{user.emailID}</TableCell>
-                        </TableRow>
-                        <TableRow key="City">
-                            <TableCell component="th" scope="row" className={classes.table} >
-                                City:
+                        <TableCell align="left">{user.emailID}</TableCell>
+                    </TableRow>
+                    <TableRow key="City">
+                        <TableCell component="th" scope="row" className={classes.table} >
+                            City:
                             </TableCell>
-                            <TableCell align="left">{(user.address && user.address.city) ? user.address.city : ""}</TableCell>
-                        </TableRow>
-                        <TableRow key="State">
-                            <TableCell component="th" scope="row" className={classes.table} >
-                                State:
+                        <TableCell align="left">{(user.address && user.address.city) ? user.address.city : ""}</TableCell>
+                    </TableRow>
+                    <TableRow key="State">
+                        <TableCell component="th" scope="row" className={classes.table} >
+                            State:
                             </TableCell>
-                            <TableCell align="left">{(user.address && user.address.state) ? user.address.state : ""}</TableCell>
-                        </TableRow>
-                        <TableRow key="Zip">
-                            <TableCell component="th" scope="row" className={classes.table} >
-                                Zip:
+                        <TableCell align="left">{(user.address && user.address.state) ? user.address.state : ""}</TableCell>
+                    </TableRow>
+                    <TableRow key="Zip">
+                        <TableCell component="th" scope="row" className={classes.table} >
+                            Zip:
                             </TableCell>
-                            <TableCell align="left">{(user.address && user.address.zip) ? user.address.zip : ""}</TableCell>
-                        </TableRow>
-                    </CardContent>
-                </CardActions>
-                <Grid container justify="center" className={classes.button}>
-                    <UserModal
-                        updateUser={updateUser}
-                    >
-                        Update
+                        <TableCell align="left">{(user.address && user.address.zip) ? user.address.zip : ""}</TableCell>
+                    </TableRow>
+                </CardContent>
+            </CardActions>
+            <Grid container justify="center" className={classes.button}>
+                <UserModal
+                    updateUser={updateUser}
+                >
+                    Update
                     </UserModal>
-                    <ChildModal
-                        saveChild={addChild}
-                        childValues={{ _id: "", firstName: "", lastName: "", age: "", activities: "" }} // Sending spaces for child fields from Add action
-                    >
-                        Add Child
+                <ChildModal
+                    saveChild={addChild}
+                    childValues={{ _id: "", firstName: "", lastName: "", age: "", activities: "" }} // Sending spaces for child fields from Add action
+                >
+                    Add Child
                     </ChildModal>
-                    </Grid>
-            </Card>
-        </div>
+            </Grid>
+        </Card>
     )
 }
 

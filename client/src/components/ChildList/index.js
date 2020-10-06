@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import ChildCard from "../ChildCard";
-import Grid from '@material-ui/core/Grid';
 import UserContext from "../../utils/userContext";
+import "./childList.css";
+import { ResultCard, ChildCard } from '../ChildCard/index';
 
 function ChildList(props) {
     const { updateChild, deleteChild, uploadImage } = props;
@@ -9,22 +9,26 @@ function ChildList(props) {
     const { user } = userState;
 
     return (
-        <div className={user.children.length > 0 ? "container mt-4" : "container mt-4 invisible"} >
-            <ul className="list-group mt-2">
-                {user.children.map(child =>
-                    <li key={child._id}>
-                       <Grid container justify="center">
-                            <ChildCard
-                                child={child}
-                                updateChild={updateChild}
-                                deleteChild={deleteChild}
-                                uploadImage={uploadImage}
-                            />
-                        </Grid>
-                    </li>
-                )
+        <div>
+        {!user.children.length ? (
+             <h2>No children listed</h2>
+             ) : (
+           
+            <ResultCard >
+                {user.children.map(child => {
+                    return (
+                        <ChildCard
+                            key={child._id}
+                            child={child}
+                            updateChild={updateChild}
+                            deleteChild={deleteChild}
+                            uploadImage={uploadImage}
+                        />
+                    );
+                })
                 }
-            </ul>
+            </ResultCard>
+             )}
         </div>
     );
 }

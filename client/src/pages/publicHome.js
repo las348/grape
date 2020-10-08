@@ -1,13 +1,13 @@
 import React from "react";
 import Testimonials from "../components/Testimonials/testimonials";
-import Carousel from '../components/Carousel';
+import Homepic from "../components/Homepic/index";
 import Reasons from '../components/Reasons/reasons';
 
 function PublicHome() {
 
     return (
         <div>
-            <Carousel />
+            <Homepic />
             <Reasons />
             <Testimonials />
         </div>

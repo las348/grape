@@ -1,10 +1,10 @@
-h2 {
+#welcome {
     text-align: center;
     padding: 45px 0;
 }
 
 
-.homeImg {
+.homeContainer {
     /* background-image: url("../../assets/baby-Shark.jpg"); */
     background-color: deepskyblue;
     background-repeat: no-repeat;

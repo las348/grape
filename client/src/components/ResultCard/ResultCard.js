@@ -6,7 +6,7 @@ import CardDeck from 'react-bootstrap/CardDeck';
 
 
 export function ResultCard({ children }) {
-    return <CardDeck className="carddeck">{children}</CardDeck>;
+    return <CardDeck className="homeCarddeck">{children}</CardDeck>;
 }
 
 export function ChildListItem(props) {

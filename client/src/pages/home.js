@@ -106,11 +106,11 @@ function Home() {
 
 
     return (
-        <div className="homeImg">
+        <div className="homeContainer">
             {alertSuccess ?
                 <Alert /> : null}
 
-            <h2>Welcome {user.displayName}</h2>
+            <h2 id="welcome">Welcome {user.displayName}</h2>
 
 
             <Grid container justify="center">

@@ -58,7 +58,7 @@ function SignUp() {
 
   return (
     <Box display="flex" justifyContent="center">
-      <section className="container">
+      <section className="Signupcontainer">
         <h2>Sign Up</h2>
         {error !== null && (
           <div className="py-1 bg-red-600 w-full text-danger text-center mb-3">

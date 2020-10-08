@@ -19,6 +19,11 @@ const useStyles = makeStyles((theme) => ({
         '&:hover': {
             background: "#2fd65d",
         }
+    },
+    login: {
+        textAlign: 'center',
+        marginTop: '50px',
+        marginBottom: '20px',
     }
 }));
 
@@ -52,7 +57,7 @@ function LoginForm(props) {
     return (
         <Grid justify="center" >
             <Grid>
-                <h2>Login Form</h2>
+                <h2 className={classes.login}>Login Form</h2>
             </Grid>
             <Grid container justify="center">
 

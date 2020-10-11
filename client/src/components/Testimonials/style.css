@@ -1,6 +1,6 @@
 #container-test {
   padding-bottom: 250px;
-  margin-top: 20px;
+  margin-top: 50px;
 }
 
 .paper {
@@ -42,5 +42,10 @@
 
 
 #testimonial {
-    margin-top: 10px;
+    font-family: 'Londrina Outline', cursive; 
+    font-size: 50px;
+    font-weight: bolder;
+    background: -webkit-linear-gradient(#2fd65d, #31a4eb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }

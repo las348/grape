@@ -1,6 +1,6 @@
 #containerReason {
     padding-bottom: 10px;
-    margin-top: 20px;
+    margin-top: 50px;
   }
   
 #why {
@@ -50,4 +50,28 @@
     word-spacing: 5px;
   }
   
-  
+  #signupButton {
+    background: rgba(34,133,195,1);
+    font-weight: bolder;
+    color: white;
+    margin-bottom: 20px;
+  }
+
+ #signupButton:hover {
+  background: #2fd65d;
+ }
+
+ #link {
+  text-decoration: none;
+ }
+
+ #porque {
+   font-family: 'Londrina Outline', cursive; 
+   font-size: 50px;
+   font-weight: bolder;
+   background: -webkit-linear-gradient(#2fd65d, #31a4eb);
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+ } 
+ 
+ 

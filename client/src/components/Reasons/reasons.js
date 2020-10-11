@@ -4,15 +4,17 @@ import Grid from '@material-ui/core/Grid';
 import IconCalendar from '../../assets/calendar.png';
 import Friends from '../../assets/friendship.png';
 import Drawing from '../../assets/drawing.png';
-
-
+import Button from '@material-ui/core/Button';
+import { Link } from "react-router-dom";
 
 function Reasons() {
 
     return (
         <Grid id="containerReason">
             <Grid container justify="center" >
-                <h2 id="why">Why PlayDatery?</h2>
+                {/* <h2 id="why">Why PlayDatery?</h2> */}
+                <h2 id="porque">Why PlayDatery?</h2>
+           
             </Grid>
             <Grid container justify="center" >
 
@@ -46,6 +48,11 @@ function Reasons() {
                         </div>
                     </div>
                 </Grid>
+            </Grid>
+            <Grid container justify="center">
+                <Link to="/signup" id="link">
+                    <Button id="signupButton">Sign up now!</Button>
+                </Link>
             </Grid>
         </Grid>
 

@@ -1,5 +1,8 @@
 # PlayDatery
 
+## Deployed site
+[https://pacific-anchorage-98148.herokuapp.com](https://pacific-anchorage-98148.herokuapp.com)
+
 ## Public Homepage
 
 ![](client/src/assets/PubHomepg.PNG)

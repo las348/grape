@@ -92,7 +92,7 @@ function Profile() {
         }
       };
 
-      // const result = await API.uploadImageS3(signedRequest, imageFile, options)
+      const result = await API.uploadImageS3(signedRequest, imageFile, options)
       console.log(`updateImage: `, imageFor)
       const res = await API.updateImage(ID, url, imageFor)
       console.log(`Response from backend for updateImage: `, res.data);

@@ -1,12 +1,9 @@
 import React, { useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
-// import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
-// import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
-// import Grid from '@material-ui/core/Grid';
 import CardDeck from 'react-bootstrap/CardDeck';
 import ChildModal from "../Modal/childModal";
 import Card from 'react-bootstrap/Card';
@@ -100,18 +97,6 @@ export function ChildCard(props) {
 
     return (
         <Card className="resultCard text-center">
-
-            {/* <Card.Body> 
-               <div>  
-                   {imageUpld.upload ? (imageUpld.success ? <Successmsg /> : <Failuremsg />) : null}
-                <Card.Img
-                    className="media"
-                    component="img"
-                    image={imageUpld.url}
-                />
-                <Upload /> 
-                </div>
-             </Card.Body> */}
 
             <CardActions >
                 <Box>

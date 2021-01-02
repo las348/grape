@@ -111,8 +111,7 @@ function Home() {
                 <Alert /> : null}
 
             <h2 id="welcome">Welcome {user.displayName}</h2>
-
-
+            
             <Grid container justify="center">
                 <SearchForm
                     handleInputChange={handleInputChange}

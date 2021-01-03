@@ -56,18 +56,13 @@ export default function SimpleModal(props) {
   const { childId, parent, schedulePlaydate } = props;
   const { userState, setUserState } = useContext(UserContext);
   const { user } = userState;
-  const classes = useStyles();
-
-  const [modalStyle] = React.useState(getModalStyle);
+  
   const [open, setOpen] = React.useState(false);
-
   const [formObject, setFormObject] = useState({});
 
-  // const [childClick, setChildClick] = useState('');
+  const [modalStyle] = React.useState(getModalStyle);
+  const classes = useStyles();
 
-  // function handleChildSelect() {
-  //   setChildClick(childClick);
-  // }
 
   function handleSchedule(event, Date) {
     const { name, value } = event.target;
@@ -85,7 +80,6 @@ export default function SimpleModal(props) {
     //will create playdate for 1st child
     handleClose();
   }
-
 
   // function handleUpcoming() {
   //   if (upcoming !== "") {
@@ -123,7 +117,7 @@ export default function SimpleModal(props) {
                     <ChildSelect
                       key={child._id}
                       child={child}
-                      // handleChildSelect={handleChildSelect}
+                      // selectChild={selectChild}
                     />
                   );
                 })

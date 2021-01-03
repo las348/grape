@@ -63,6 +63,11 @@ export default function SimpleModal(props) {
 
   const [formObject, setFormObject] = useState({});
 
+  // const [childClick, setChildClick] = useState('');
+
+  // function handleChildSelect() {
+  //   setChildClick(childClick);
+  // }
 
   function handleSchedule(event, Date) {
     const { name, value } = event.target;
@@ -75,7 +80,7 @@ export default function SimpleModal(props) {
   function handleSubmit(event) {
     event.preventDefault();
     console.log("parent2 in dateModal" + parent);
-    
+
     schedulePlaydate(formObject, user.children[0]._id, childId, parent);
     //will create playdate for 1st child
     handleClose();
@@ -103,28 +108,33 @@ export default function SimpleModal(props) {
   const body = (
     <div style={modalStyle} className={classes.paper}>
       <form className={classes.container} noValidate>
-      <h4>Scheduler</h4>
+        <h4>Scheduler</h4>
 
-      <p>Select child to go on a playdate</p>
+        <p>Select child to go on a playdate</p>
 
-      <div>
-        {!user.children.length ? (
-             <h2>No children listed</h2>
-             ) : (
-           
-            <ResultSelect >
+        <div>
+          {!user.children.length ? (
+            <h2>No children listed</h2>
+          ) : (
+
+              <ResultSelect >
                 {user.children.map(child => {
-                    return (
-                        <ChildSelect
-                            key={child._id}
-                            child={child}
-                        />
-                    );
+                  return (
+                    <ChildSelect
+                      key={child._id}
+                      child={child}
+                      // handleChildSelect={handleChildSelect}
+                    />
+                  );
                 })
                 }
-            </ResultSelect>
-             )}
+                {/* <div>
+                  <p>You selected {}</p>
+                </div> */}
+              </ResultSelect>
+            )}
         </div>
+
 
         <div className="form-group">
           <TextField

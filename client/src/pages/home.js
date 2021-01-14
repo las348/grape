@@ -6,7 +6,8 @@ import { ResultCard, ChildListItem } from "../components/ResultCard/ResultCard";
 import Grid from '@material-ui/core/Grid';
 import Alert from '../components/Alert/alert';
 import "./style/home.css";
-
+import DateModal from '../components/Modal/dateModal';
+import Button from '@material-ui/core/Button';
 
 let resultsAll = [];
 
@@ -111,7 +112,7 @@ function Home() {
                 <Alert /> : null}
 
             <h2 id="welcome">Welcome {user.displayName}</h2>
-            
+
             <Grid container justify="center">
                 <SearchForm
                     handleInputChange={handleInputChange}
@@ -132,14 +133,21 @@ function Home() {
                                     />
                                 );
                             })}
+                            <DateModal
+                                // childId={_id}
+                                // parent={parent}
+                                schedulePlaydate={schedulePlaydate}
+                            />
+                             
                         </ResultCard>
+                         
                     )}
 
             </div>
-
-
         </div>
     )
 }
 
 export default Home;
+
+//datemodal

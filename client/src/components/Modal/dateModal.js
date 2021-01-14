@@ -6,7 +6,8 @@ import Button from '@material-ui/core/Button';
 import UserContext from "../../utils/userContext";
 import moment from 'moment';
 import Grid from '@material-ui/core/Grid';
-import { ResultSelect, ChildSelect } from '../ChildSelect';
+import CardDeck from 'react-bootstrap/CardDeck';
+import Card from 'react-bootstrap/Card';
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
@@ -56,13 +57,12 @@ export default function SimpleModal(props) {
   const { childId, parent, schedulePlaydate } = props;
   const { userState, setUserState } = useContext(UserContext);
   const { user } = userState;
-  
+console.log(`user in dateModal` + user.children);
   const [open, setOpen] = React.useState(false);
   const [formObject, setFormObject] = useState({});
 
   const [modalStyle] = React.useState(getModalStyle);
   const classes = useStyles();
-
 
   function handleSchedule(event, Date) {
     const { name, value } = event.target;
@@ -98,35 +98,46 @@ export default function SimpleModal(props) {
   const date = moment().format('YYYY-MM-DD') + "T" + moment().format('hh:mm');
   // console.log(date);
 
+  const [childSelect, setChildSelect] = useState({
+    _id: ''
+  });
+
+  function handleClick(e) {
+    e.preventDefault();
+    setChildSelect({ ...childSelect, _id: e.target.value })
+    console.log(childSelect);
+  };
 
   const body = (
     <div style={modalStyle} className={classes.paper}>
       <form className={classes.container} noValidate>
         <h4>Scheduler</h4>
 
-        <p>Select child to go on a playdate</p>
+        <p>Select child to go on a playdate {user.displayName}</p>
 
         <div>
           {!user.children.length ? (
             <h2>No children listed</h2>
           ) : (
 
-              <ResultSelect >
+              <CardDeck className="cardselect">
                 {user.children.map(child => {
+                  console.log("child id in map" + child._id);
                   return (
-                    <ChildSelect
-                      key={child._id}
-                      child={child}
-                      // selectChild={selectChild}
-                    />
-                  );
+
+                    <Card>
+                      <Button onClick={handleClick} value={child._id}>
+                        <h5>
+                          {child.firstName}
+                        </h5>
+                      </Button>
+                    </Card>
+                  )
                 })
                 }
-                {/* <div>
-                  <p>You selected {}</p>
-                </div> */}
-              </ResultSelect>
-            )}
+              </CardDeck>
+            )
+          }
         </div>
 
 
@@ -159,9 +170,9 @@ export default function SimpleModal(props) {
 
   return (
     <Grid container justify='center'>
-      <Button className={classes.button} onClick={handleOpen}>
+      {/* <Button className={classes.button} onClick={handleOpen}>
         Schedule Playdate
-        </Button>
+        </Button> */}
       <Modal
         open={open}
         onClose={handleClose}

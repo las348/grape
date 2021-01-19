@@ -2,31 +2,30 @@ import React, { useContext, useState, useEffect } from "react";
 import UserContext from "../utils/userContext";
 import SearchForm from '../components/SearchForm/SearchForm';
 import API from "../utils/API";
-import { ResultCard, ChildListItem } from "../components/ResultCard/ResultCard";
+import { ChildListItem } from "../components/ResultCard/ResultCard";
 import Grid from '@material-ui/core/Grid';
-import Alert from '../components/Alert/alert';
 import "./style/home.css";
+<<<<<<< Updated upstream
 import DateModal from '../components/Modal/dateModal';
 import Button from '@material-ui/core/Button';
+=======
+import CardDeck from 'react-bootstrap/CardDeck';
+import "../components/ResultCard/resultcard.css";
+
+>>>>>>> Stashed changes
 
 let resultsAll = [];
 
 function Home() {
-
     const { userState } = useContext(UserContext);
     const { user } = userState;
-
     const [child, setChild] = useState([])
     const [childSearch, setChildSearch] = useState("");
-    const [alertSuccess, setAlertSuccess] = useState();
-
-    // const [date, setDate] = useState("");
 
     // Load any upcoming events
     useEffect(() => {
         API.searchChildren(user.uid)
             .then(res => {
-                console.log(res.data)
                 resultsAll = res.data;
                 setChild(resultsAll)
             })
@@ -72,45 +71,8 @@ function Home() {
         setChild(filterResults)
     };
 
-    function schedulePlaydate(formObject, child1, child2, parent2ID) {
-
-        //will create playdate for 1st child
-
-        if (formObject.date && formObject.child) {
-            let eventObj = {
-                event: {
-                    Date: formObject.date,
-                    children: [
-                        child1,
-                        child2
-                    ]
-                },
-                parent1: user._id,
-                parent2: parent2ID
-            };
-
-            console.log(eventObj);
-
-            API.setPlaydate(eventObj)
-                .then((res) => {
-                    console.log(`Playdate Scheduled: `, res.data);
-                    // alert('Success');
-                    setAlertSuccess(true);
-                })
-
-                .catch(error => {
-                    console.log(error)
-                })
-        }
-
-    }
-
-
     return (
         <div className="homeContainer">
-            {alertSuccess ?
-                <Alert /> : null}
-
             <h2 id="welcome">Welcome {user.displayName}</h2>
 
             <Grid container justify="center">
@@ -119,20 +81,20 @@ function Home() {
                     handleSearchChild={handleSearchChild}
                 />
             </Grid>
-            <div container justify="center" >
+            <div>
                 {!child.length ? (
                     <h2>No results found</h2>
                 ) : (
-                        <ResultCard>
+                        <CardDeck className="homeCarddeck">
                             {child.map(child => {
                                 return (
                                     <ChildListItem
                                         key={child._id}
-                                        child={child}
-                                        schedulePlaydate={schedulePlaydate}
+                                        child={child}                                        
                                     />
                                 );
                             })}
+<<<<<<< Updated upstream
                             <DateModal
                                 // childId={_id}
                                 // parent={parent}
@@ -141,8 +103,10 @@ function Home() {
                              
                         </ResultCard>
                          
+=======
+                        </CardDeck>
+>>>>>>> Stashed changes
                     )}
-
             </div>
         </div>
     )

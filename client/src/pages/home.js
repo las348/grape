@@ -5,14 +5,9 @@ import API from "../utils/API";
 import { ChildListItem } from "../components/ResultCard/ResultCard";
 import Grid from '@material-ui/core/Grid';
 import "./style/home.css";
-<<<<<<< Updated upstream
-import DateModal from '../components/Modal/dateModal';
-import Button from '@material-ui/core/Button';
-=======
 import CardDeck from 'react-bootstrap/CardDeck';
 import "../components/ResultCard/resultcard.css";
 
->>>>>>> Stashed changes
 
 let resultsAll = [];
 
@@ -94,18 +89,7 @@ function Home() {
                                     />
                                 );
                             })}
-<<<<<<< Updated upstream
-                            <DateModal
-                                // childId={_id}
-                                // parent={parent}
-                                schedulePlaydate={schedulePlaydate}
-                            />
-                             
-                        </ResultCard>
-                         
-=======
                         </CardDeck>
->>>>>>> Stashed changes
                     )}
             </div>
         </div>
@@ -114,4 +98,3 @@ function Home() {
 
 export default Home;
 
-//datemodal

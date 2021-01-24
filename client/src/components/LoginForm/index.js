@@ -24,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
         textAlign: 'center',
         marginTop: '50px',
         marginBottom: '20px',
+        marginLeft: 0,
     }
 }));
 
@@ -55,7 +56,7 @@ function LoginForm(props) {
     const classes = useStyles();
 
     return (
-        <Grid justify="center" >
+        <Grid>
             <Grid>
                 <h2 className={classes.login}>Login Form</h2>
             </Grid>

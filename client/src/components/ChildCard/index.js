@@ -50,7 +50,7 @@ export function ChildCard(props) {
     const [imageUpld, setImageUpld] = useState({
         upload: undefined,
         success: false,
-        url: image || "https://via.placeholder.com/150"
+        url: image || "https://via.placeholder.com/300"
     })
 
     const classes = useStyles();

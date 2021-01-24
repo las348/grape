@@ -32,7 +32,7 @@ function getModalStyle() {
 const useStyles = makeStyles((theme) => ({
   paper: {
     position: 'absolute',
-    width: 750,
+    maxWidth: 750,
     backgroundColor: theme.palette.background.paper,
     border: '2px solid #000',
     boxShadow: theme.shadows[5],
@@ -49,6 +49,7 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     margin: theme.spacing(1),
+    width: 150,
     background: 'rgba(34,133,195,1)',
     fontWeight: 'bolder',
     color: 'white',
@@ -63,12 +64,12 @@ export default function SimpleModal(props) {
   const { userState } = useContext(UserContext);
   const { user } = userState;
   const [open, setOpen] = useState(modalFlag);
-  
+
   const [alertSuccess, setAlertSuccess] = useState();
   const [modalStyle] = React.useState(getModalStyle);
-  
+
   const classes = useStyles();
-  let child1Id = ''; 
+  let child1Id = '';
   let date = moment().format('YYYY-MM-DD') + "T" + moment().format('hh:mm');
   const [formObject, setFormObject] = useState({
     date: date
@@ -91,27 +92,27 @@ export default function SimpleModal(props) {
     event.preventDefault();
     console.log(`Scheduleplaydate function called: `, formObject.date);
     if (child1Id) {
-        let eventObj = {
-            event: {
-                Date: formObject.date,
-                children: [
-                  child1Id,
-                  child2Id
-                ]
-            },
-            parent1: user._id,
-            parent2: parent._id
-        };
-        console.log(`Scheduleplaydate Object: `, eventObj);
-        API.setPlaydate(eventObj)
-            .then((res) => {
-                console.log(`Playdate Scheduled: `, res.data);
-                // alert('Success');
-                setAlertSuccess(true);
-            })
-            .catch(error => {
-                console.log(error)
-            })
+      let eventObj = {
+        event: {
+          Date: formObject.date,
+          children: [
+            child1Id,
+            child2Id
+          ]
+        },
+        parent1: user._id,
+        parent2: parent._id
+      };
+      console.log(`Scheduleplaydate Object: `, eventObj);
+      API.setPlaydate(eventObj)
+        .then((res) => {
+          console.log(`Playdate Scheduled: `, res.data);
+          // alert('Success');
+          setAlertSuccess(true);
+        })
+        .catch(error => {
+          console.log(error)
+        })
     }
     else {
       alert('Please Select a child first.');
@@ -121,59 +122,59 @@ export default function SimpleModal(props) {
   const handleClose = () => {
     setOpen(false);
   };
-  
+
   const body = (
     <div style={modalStyle} className={classes.paper}>
       {alertSuccess ?
         <Alert /> : null
       }
       <form className={classes.container} noValidate>
-        <h4>Scheduler</h4>
-        <p>Select child to go on a playdate</p>
-        <div>
-          {!user.children.length ? (
-            <h2>No children listed</h2>
-            ) : 
-            (
-              <CardDeck className="cardselect">
+        <div className="flex-container">
+          <h4>Scheduler</h4>
+          <p>Select child to go on a playdate</p>
+          <div>
+            {!user.children.length ? (
+              <h2>No children listed</h2>
+            ) :
+              (
+                <CardDeck className="cardselect">
                   {user.children.map(child => {
                     return (
-                      <Card key={child._id}>
-                        <CardActions >
+                      <Card key={child._id} className='datemodal'>
+                       
                           <CardMedia
-                            className='media'
+                            id='datemodalmedia'
                             component="img"
-                            image={child.image}
+                            image={child.image || "https://via.placeholder.com/200"}
                             value={child.firstName}
                           />
-                        </CardActions>
-                        {/* <Card.Body className="button" > */}
-                          <Button className={classes.button} value={child._id} onClick={handleChildSelect} >
-                            <h5>
-                              {child.firstName} {child.lastName}
-                            </h5>
-                          </Button>
-                        {/* </Card.Body> */}
+                        <Button className={classes.button} value={child._id} onClick={handleChildSelect} >
+                          <h5>
+                            {child.firstName} {child.lastName}
+                          </h5>
+                        </Button>
                       </Card>
                     );
                   })
                   }
-              </CardDeck>
-            )
-          }
-        </div>
-        <div className="form-group">
-          <TextField
-            id="datetime-local"
-            label="Schedule playdate"
-            type="datetime-local"
-            className={classes.textField}
-            defaultValue={date}
-            format={moment().format('YYYY-MM-DD') + "T" + moment().format('hh:mm')}
-            name="date"
-            onChange={handleSchedule}
-            renderInput={(props) => <TextField {...props} />}
-          />
+                </CardDeck>
+              )
+            }
+          </div>
+
+          <div className="form-group">
+            <TextField
+              id="datetime-local"
+              label="Schedule playdate"
+              type="datetime-local"
+              className={classes.textField}
+              defaultValue={date}
+              format={moment().format('YYYY-MM-DD') + "T" + moment().format('hh:mm')}
+              name="date"
+              onChange={handleSchedule}
+              renderInput={(props) => <TextField {...props} />}
+            />
+          </div>
         </div>
       </form>
       <Button className={classes.button} onClick={schedulePlaydate}>

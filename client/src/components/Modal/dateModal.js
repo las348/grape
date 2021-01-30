@@ -6,7 +6,6 @@ import Button from '@material-ui/core/Button';
 import UserContext from "../../utils/userContext";
 import moment from 'moment';
 import Grid from '@material-ui/core/Grid';
-import CardActions from '@material-ui/core/CardActions';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardDeck from 'react-bootstrap/CardDeck';
 import Card from 'react-bootstrap/Card';
@@ -74,13 +73,17 @@ export default function SimpleModal(props) {
   const [formObject, setFormObject] = useState({
     date: date
   });
+
   function handleChildSelect(event) {
     event.preventDefault();
     child1Id = event.currentTarget.value;
+    console.log(child1Id);
   };
+
   function handleSchedule(event) {
     const { name, value } = event.target;
     setFormObject({ ...formObject, [name]: value })
+    // console.log(formObject);
   }
   // function handleSubmit(event) {
   //   event.preventDefault();
@@ -88,10 +91,11 @@ export default function SimpleModal(props) {
   //   console.log("After call to schedulePlaydate");
   //   handleClose();
   // }
+
   const schedulePlaydate = (event) => {
     event.preventDefault();
     console.log(`Scheduleplaydate function called: `, formObject.date);
-    if (child1Id) {
+    if (child1Id !== null) {
       let eventObj = {
         event: {
           Date: formObject.date,
@@ -104,6 +108,7 @@ export default function SimpleModal(props) {
         parent2: parent._id
       };
       console.log(`Scheduleplaydate Object: `, eventObj);
+
       API.setPlaydate(eventObj)
         .then((res) => {
           console.log(`Playdate Scheduled: `, res.data);
@@ -141,13 +146,13 @@ export default function SimpleModal(props) {
                   {user.children.map(child => {
                     return (
                       <Card key={child._id} className='datemodal'>
-                       
-                          <CardMedia
-                            id='datemodalmedia'
-                            component="img"
-                            image={child.image || "https://via.placeholder.com/200"}
-                            value={child.firstName}
-                          />
+
+                        <CardMedia
+                          id='datemodalmedia'
+                          component="img"
+                          image={child.image || "https://via.placeholder.com/200"}
+                          value={child.firstName}
+                        />
                         <Button className={classes.button} value={child._id} onClick={handleChildSelect} >
                           <h5>
                             {child.firstName} {child.lastName}
@@ -161,7 +166,6 @@ export default function SimpleModal(props) {
               )
             }
           </div>
-
           <div className="form-group">
             <TextField
               id="datetime-local"

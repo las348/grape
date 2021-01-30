@@ -4,7 +4,7 @@
 }
 
 .datemodal {
-    border: red;
+    border: white;
     width: 150px;
 }
 
@@ -14,10 +14,6 @@
     margin-left: 8px;
     width: 150px;
     height: 200px;
-}
-
-.button {
-    text-align: center;
 }
 
 form p {

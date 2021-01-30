@@ -12,6 +12,7 @@ import UserModal from "../Modal/userModal";
 import ChildModal from "../Modal/childModal";
 import UserContext from "../../utils/userContext";
 import Grid from '@material-ui/core/Grid';
+import MissingUser from '../../assets/happy.png';
 
 const useStyles = makeStyles({
     root: {
@@ -25,7 +26,6 @@ const useStyles = makeStyles({
     },
     image: {
         borderRadius: "10px",
-        boxShadow: "11px 7px 36px -10px rgba(0,0,0,0.75)",
     },
     details: {
         display: 'flex',
@@ -51,7 +51,7 @@ function profileCard(props) {
     const [imageUpld, setImageUpld] = useState({
         upload: undefined,
         success: false,
-        url: user.image || "https://via.placeholder.com/250"
+        url: user.image || MissingUser
     })
 
     const Successmsg = () => (

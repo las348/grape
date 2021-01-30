@@ -12,6 +12,7 @@ import Card from 'react-bootstrap/Card';
 import Alert from '../Alert/alert';
 import API from "../../utils/API";
 import "./style.css";
+import MissingPic from '../../assets/robot.png';
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
@@ -150,7 +151,7 @@ export default function SimpleModal(props) {
                         <CardMedia
                           id='datemodalmedia'
                           component="img"
-                          image={child.image || "https://via.placeholder.com/200"}
+                          image={child.image || MissingPic}
                           value={child.firstName}
                         />
                         <Button className={classes.button} value={child._id} onClick={handleChildSelect} >

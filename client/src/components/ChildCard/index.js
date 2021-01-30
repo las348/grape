@@ -8,7 +8,7 @@ import CardDeck from 'react-bootstrap/CardDeck';
 import ChildModal from "../Modal/childModal";
 import Card from 'react-bootstrap/Card';
 import "./childCard.css";
-
+import MissingPic from '../../assets/robot.png';
 
 const useStyles = makeStyles({
     media: {
@@ -50,7 +50,7 @@ export function ChildCard(props) {
     const [imageUpld, setImageUpld] = useState({
         upload: undefined,
         success: false,
-        url: image || "https://via.placeholder.com/300"
+        url: image || MissingPic
     })
 
     const classes = useStyles();
@@ -98,8 +98,8 @@ export function ChildCard(props) {
     return (
         <Card className="resultCard text-center">
 
-            <CardActions >
-                <Box>
+            <CardActions className='card-action'>
+                <Box > 
                     {imageUpld.upload ? (imageUpld.success ? <Successmsg /> : <Failuremsg />) : null}
                     <CardMedia
                         className='media'

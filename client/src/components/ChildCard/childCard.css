@@ -10,7 +10,10 @@
 } 
 
 .media {
-  top: 0;
-	left: 0;
-	width: 100%;
+  border-radius: 5%;
 }
+
+.card-action {
+  margin: auto;
+}
+

@@ -12,7 +12,6 @@ function Reasons() {
     return (
         <Grid id="containerReason">
             <Grid container justify="center" >
-                {/* <h2 id="why">Why PlayDatery?</h2> */}
                 <h2 id="porque">Why PlayDatery?</h2>
            
             </Grid>

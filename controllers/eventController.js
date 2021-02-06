@@ -14,6 +14,7 @@ module.exports = {
     },
     // Create a new Event document
     create: function(req, res) {
+        console.log(req.body);
         let eventDetails = req.body.event;
         let parent1 = req.body.parent1;
         let parent2 = req.body.parent2;

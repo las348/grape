@@ -69,16 +69,19 @@ export default function SimpleModal(props) {
   const [modalStyle] = React.useState(getModalStyle);
 
   const classes = useStyles();
-  let child1Id = '';
+ 
   let date = moment().format('YYYY-MM-DD') + "T" + moment().format('hh:mm');
   const [formObject, setFormObject] = useState({
-    date: date
+    date: date,
+    child1Id: ''
   });
 
   function handleChildSelect(event) {
     event.preventDefault();
-    child1Id = event.currentTarget.value;
-    console.log(child1Id);
+    
+    let child1Id = event.currentTarget.value;
+    setFormObject({ ...formObject, child1Id: child1Id })
+    // console.log(child1Id);
   };
 
   function handleSchedule(event) {
@@ -96,12 +99,12 @@ export default function SimpleModal(props) {
   const schedulePlaydate = (event) => {
     event.preventDefault();
     console.log(`Scheduleplaydate function called: `, formObject.date);
-    if (child1Id !== null) {
+    if (formObject.child1Id !== null) {
       let eventObj = {
         event: {
           Date: formObject.date,
           children: [
-            child1Id,
+            formObject.child1Id,
             child2Id
           ]
         },
@@ -109,7 +112,7 @@ export default function SimpleModal(props) {
         parent2: parent._id
       };
       console.log(`Scheduleplaydate Object: `, eventObj);
-
+      console.log(formObject.child1Id);
       API.setPlaydate(eventObj)
         .then((res) => {
           console.log(`Playdate Scheduled: `, res.data);

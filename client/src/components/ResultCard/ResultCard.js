@@ -4,6 +4,7 @@ import "./resultcard.css";
 import DateModal from '../Modal/dateModal';
 import Button from '@material-ui/core/Button';
 import Card from 'react-bootstrap/Card';
+import MissingPic from '../../assets/robot.png';
 
 const useStyles = makeStyles((theme) => ({
     button: {
@@ -39,7 +40,7 @@ export function ChildListItem(props) {
         <Card className="resultCard text-center">
             <Card.Img
                 variant="top"
-                src={image || "https://via.placeholder.com/150"}
+                src={image || MissingPic}
                 className="media" />
             <Card.Body style={{ paddingBottom: '10px' }}>
                 <Card.Title> {firstName} {lastName}</Card.Title>

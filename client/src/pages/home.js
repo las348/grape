@@ -10,14 +10,17 @@ import "../components/ResultCard/resultcard.css";
 
 
 let resultsAll = [];
+let eventsAll = [];
 
 function Home() {
     const { userState } = useContext(UserContext);
     const { user } = userState;
-    const [child, setChild] = useState([])
+    const [child, setChild] = useState([]);
     const [childSearch, setChildSearch] = useState("");
+    const [playdate, setPlaydate] = useState([]);
 
-    // Load any upcoming events
+
+    // Load all children in database
     useEffect(() => {
         API.searchChildren(user.uid)
             .then(res => {
@@ -25,14 +28,18 @@ function Home() {
                 setChild(resultsAll)
             })
             .catch(err => console.log(err));
-        // loadEvents()
     }, [])
 
-    // function loadEvents() {
-    //     API.getEvents()
-    //         .then(console.log("Upcoming Events"))
-    //         .catch(err => console.log(err));
-    // };
+    // Load all playdates user has scheduled
+    useEffect(() => {
+        API.findEvents(user)
+            .then(res => {
+                eventsAll = res.data;
+                setPlaydate(eventsAll)
+                console.log(eventsAll);
+            })
+            .catch(err => console.log(err));
+    }, [])
 
     //Search for child
     function handleInputChange(event) {
@@ -70,6 +77,25 @@ function Home() {
         <div className="homeContainer">
             <h2 id="welcome">Welcome {user.displayName}</h2>
 
+            <Grid>
+                <div>
+                    {!playdate.length ? (
+                        <h2>No results found</h2>
+                    ) : (
+                            <div>
+                                {playdate.map(playdate => {
+                                    return (
+                                        <div
+                                            key={playdate.id}
+                                            playdate={playdate}
+                                        />
+                                    );
+                                })}
+                            </div>
+                        )}
+                </div>
+            </Grid>
+
             <Grid container justify="center">
                 <SearchForm
                     handleInputChange={handleInputChange}
@@ -85,7 +111,7 @@ function Home() {
                                 return (
                                     <ChildListItem
                                         key={child._id}
-                                        child={child}                                        
+                                        child={child}
                                     />
                                 );
                             })}

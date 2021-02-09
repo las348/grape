@@ -11,10 +11,11 @@ module.exports = {
         .find({_id: eventID})
         .populate("children")
         .then(dbEvent => res.json(dbEvent))
+        console.log(dbEvent);
     },
     // Create a new Event document
     create: function(req, res) {
-        console.log(req.body);
+        // console.log(req.body);
         let eventDetails = req.body.event;
         let parent1 = req.body.parent1;
         let parent2 = req.body.parent2;

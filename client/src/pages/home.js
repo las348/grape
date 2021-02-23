@@ -10,15 +10,17 @@ import "../components/ResultCard/resultcard.css";
 
 
 let resultsAll = [];
-let eventsAll = [];
+
 
 function Home() {
     const { userState } = useContext(UserContext);
     const { user } = userState;
     const [child, setChild] = useState([]);
     const [childSearch, setChildSearch] = useState("");
+    const [eventId, seteventId] = useState([]);
     const [playdate, setPlaydate] = useState([]);
 
+    let eventsAll = [];
 
     // Load all children in database
     useEffect(() => {
@@ -31,16 +33,40 @@ function Home() {
     }, [])
 
     // Load all event ids
+    // useEffect(() => {
+    //     API.findEvents(user._id)
+    //         .then(res => {
+    //             eventsAll = res.data;
+    //             seteventId(eventsAll)
+    //             console.log(eventsAll)
+    //         })
+    //         .catch(err => console.log(err));
+
+    // }, [])
+
     useEffect(() => {
-        API.findEvents(user._id)
-            .then(res => {
-                eventsAll = res.data;
-                console.log(eventsAll);
-            })
-            .catch(err => console.log(err));
+        const fetchEvents = async () => {
+            const { data } = await API.findEvents(user._id)
+            seteventId(data)
+            console.log(data)
+            getEventInfo()
+        }
+
+        fetchEvents()
     }, [])
 
+
     //then call getEventInfo to get event details, loop tru array
+    function getEventInfo() {
+        // console.log(eventId)
+        API.getEventInfo(user._id)
+            .then((res) => {
+                console.log(`Events: `, res);
+                setPlaydate(res)
+            }
+            )
+    }
+
 
     //Search for child
     function handleInputChange(event) {
@@ -80,18 +106,19 @@ function Home() {
 
             <Grid>
                 <div>
-                    {!playdate.length ? (
+                    {!eventId.length ? (
                         <h2>No results found</h2>
                     ) : (
                             <div>
-                                {playdate.map(playdate => {
+                                Events scheduled
+                                {/* {playdate.map(playdate => {
                                     return (
                                         <div
                                             key={playdate.id}
                                             playdate={playdate}
                                         />
                                     );
-                                })}
+                                })} */}
                             </div>
                         )}
                 </div>

@@ -99,7 +99,7 @@ module.exports = {
         let userID = req.params.userId;
         console.log(`User events input:`, userID )
         db.User
-        .find({uid: userID})
+        .find({_id: userID})
         .then(resp => res.json(resp[0].playdate))
         .catch(err => res.status(422).json(err));
     }

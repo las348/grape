@@ -116,7 +116,6 @@ export default function SimpleModal(props) {
       API.setPlaydate(eventObj)
         .then((res) => {
           console.log(`Playdate Scheduled: `, res.data);
-          // alert('Success');
           setAlertSuccess(true);
         })
         .catch(error => {

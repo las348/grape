@@ -22,7 +22,7 @@ module.exports = {
         db.Event
         .create(eventDetails)
         .then(({_id}) => db.User
-                            .updateMany({uid: { $in: [parent1, parent2]}}, { $push: { playdate: _id } }, { new: true }) 
+                            .updateMany({_id: { $in: [parent1, parent2]}}, { $push: { playdate: _id } }, { new: true }) 
                             .then(dbUser => {console.log(dbUser), res.json(dbUser)})
                             .catch(err => res.status(422).json(err)))
           .catch(err => res.status(422).json(err));

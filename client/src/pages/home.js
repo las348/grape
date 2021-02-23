@@ -30,16 +30,17 @@ function Home() {
             .catch(err => console.log(err));
     }, [])
 
-    // Load all playdates user has scheduled
+    // Load all event ids
     useEffect(() => {
-        API.findEvents(user)
+        API.findEvents(user._id)
             .then(res => {
                 eventsAll = res.data;
-                setPlaydate(eventsAll)
                 console.log(eventsAll);
             })
             .catch(err => console.log(err));
     }, [])
+
+    //then call getEventInfo to get event details, loop tru array
 
     //Search for child
     function handleInputChange(event) {

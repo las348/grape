@@ -47,13 +47,13 @@ export default {
         return await axios.put("/api/users/image/" + ID, body);
     },
     setPlaydate: async function (playdate) {
-        return await axios.post("/api/events", playdate);
+        return await axios.post("/api/events/", playdate);
     },
     findEvents : async function(user) {
-        return await axios.get("/api/users/events" + user);
+        return await axios.get("/api/users/events/" + user);
     },
     getEventInfo : async function(playdate) {
-        return await axios.get("/api/events"+ playdate);
+        return await axios.get("/api/events/" + playdate);
     }
 }
 

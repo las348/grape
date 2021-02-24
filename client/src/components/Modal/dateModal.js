@@ -63,7 +63,7 @@ export default function SimpleModal(props) {
   const { child2Id, parent, modalFlag } = props;
   const { userState } = useContext(UserContext);
   const { user } = userState;
-  const [open, setOpen] = useState(modalFlag);
+  
 
   const [alertSuccess, setAlertSuccess] = useState();
   const [modalStyle] = React.useState(getModalStyle);
@@ -126,9 +126,10 @@ export default function SimpleModal(props) {
       alert('Please Select a child first.');
     }
   }
-
+  const [open, setOpen] = useState(modalFlag);
   const handleClose = () => {
     setOpen(false);
+    console.log(modalFlag)
   };
 
   const body = (
